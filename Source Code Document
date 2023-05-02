@@ -1,0 +1,21 @@
+This program is written in C#, and is meant to be run on Unity v. 2018.3.11f1. 
+The code concerned with importing data from OpenStreetMap is located in the file location below. 
+  real-world-map-data-master/real-world-map-data-master/src/Real World Map Data/Assests/Scripts/Editor/Open Map Importer
+
+While in Unity, you import the code through Windows>Import OpenMap Data
+
+1. This is how the user interfaces with ImportMapDataEditorWindow.cs. It takes in the OpenStreetMap data in .txt format, and the user's selected Materials for 
+buildings and roads. 
+
+2. From here, ImportMapWrappers.cs accesses the above class and passes the data on to MapReader.cs to read the .txt file from OSM. 
+
+3. MapReader.cs then takes the file and defines ways and nodes for the program, and other such data that various classes can more easily understand. This info 
+is then returned back to ImportMapWrappers.cs. 
+
+4. ImportMapWrappers.cs then calls BuildingMaker.cs and RoadMaker.cs. These two are both based off  BaseInfrastructureMaker.cs, and so inherit it's methods, such as
+CreateObject(), adnd DetectIntersection(). 
+
+5. BuildingMaker.cs renders in buildings, and RoadMaker.cs renders in the roads. 
+
+Additionally, in Real World Map Data/Assests/ there exists a car, and in Real World Map Data/Assests/Scripts/ there is Movement.cs
+6. And these allow for a car to be placed on a road in the 3d environment, and when given a prepared path to follow, it can drive that path, from flag to flag. 
